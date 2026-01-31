@@ -32,7 +32,7 @@ We will set up the initial environment for you to build on top of during your Mi
 
 ## Prerequisites for CodeSpaces
 1. An Azure subscription. If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/).
-1. Validate [Python 3.13+](https://www.python.org/downloads/) is setup in your environment or lower
+1. Validate [Python 3.13](https://www.python.org/downloads/) is setup in your environment or lower
 
 ## Recommended Regions
 * North Central US (northcentralus)
@@ -45,14 +45,35 @@ We will set up the initial environment for you to build on top of during your Mi
 
 <br>
 
-* Optimal Region for availability should be WestEurope for Document Intelligence and Sweden Central for Infrastructure and Sweden Central for OpenAiLocation (Optimal due to OpenAI Availability)
+* Optimal Region for availability should be Sweden Central (Optimal due to Azure OpenAI availability)
 <br>
 
-* Alternative Region for availability should be West US 2 for Document Intelligence and West US 2 for Infrastructure and West US 3 for OpenAiLocation
+* Alternative Region for availability should be West US 3 for Azure OpenAI availability
 
 <br>
 
-## Deploy the Evaluation environment
+
+## Setup your Development Environment
+
+1. Start the Microhack on Local or Codespaces
+
+    a. Open a terminal window for local deployments and confirm prerequisites are complete
+        
+    * Fork the [Microhack Trustworthy AI](https://github.com/microsoft/microhacks-trust-ai) repo into your Github account
+        
+    * Clone the forked repo in your Github account to your environment by running the following command:
+
+    * ```git clone https://github.com/<Github username>/microhacks-trust-ai```
+
+    * At the terminal window confirm the home directory /microhacks-trust-ai
+    
+    b. For Codespaces, go into your web browser and login to github
+
+    * Fork the [Microhack Trustworthy AI](https://github.com/microsoft/microhacks-trust-ai) repo into your Github account
+        
+    * `Click on Code` (Green) button and click on `+` button (Create a codepspaces on main).  This will take a few minutes to provision a Codespaces instance.  At the bottom of the browers is a terminal window and will accept commands when provisioning is complete.
+
+    * At the terminal window confirm the home directory /microhacks-trust-ai
 
 1. Make a new Python virtual environment and activate it.  
 
@@ -83,26 +104,6 @@ We will set up the initial environment for you to build on top of during your Mi
     ```
 
 ## Deploy the Azure Resources
-
-1. Start the Microhack on Local or Codespaces
-
-    a. Open a terminal window for local deployments and confirm prerequisites are complete
-        
-    * Fork the [Microhack Trustworthy AI](https://github.com/DataSciNAll/trustworthy_ai) repo into your Github account
-        
-    * Clone the forked repo in your Github account to your environment by running the following command:
-
-    * ```git clone https://github.com/<Github username>/trustworthy_ai```
-
-    * At the terminal window confirm the home directory /trustworthy_ai
-    
-    b. For Codespaces, go into your web browser and login to github
-
-    * Fork the [Microhack Trustworthy AI](https://github.com/DataSciNAll/trustworthy_ai) repo into your Github account
-        
-    * `Click on Code` (Green) button and click on `+` button (Create a codepspaces on main).  This will take a few minutes to provision a Codespaces instance.  At the bottom of the browers is a terminal window and will accept commands when provisioning is complete.
-
-    * At the terminal window confirm the home directory /trustworthy_ai
 
 1. Login to your Azure Developer Account in the terminal window
 
@@ -141,9 +142,12 @@ We will set up the initial environment for you to build on top of during your Mi
 <br>
 
 ## Success Criteria
-1. Click on prompt cards to see if it returns answers to these questions. 
-1. Open Foundry Project to see model deployments.  Search for 'eval' as a model name
+1. Type this question into the prompt window, "What is the out-of-pocket maximum for the Northwind Standard plan?".  The returned answer should mention $6,000 per person per year.
+
+1. Open Foundry Project to see model deployments.  Search for 'gpt-4o-mini' as a model name
+
 1. Click on Monitor icon and click on the Resource Usage Tab.  For Model deployment, select ```text-embedding-3-large```.  You should see numbers for Total requests and Total Token count
+
 <br>
 
 ## Run the workshop
