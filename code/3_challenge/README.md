@@ -40,17 +40,19 @@ Execute a prebuilt GitHub Actions workflow that automates building and deploying
 
 - You already forked this repo.
 - Make sure, you already logged into AZ, AZD and Github.
-- Application should be up and running.
+- Application should be up and running. The workflow does NOT start your app locally in Github runner env. It calls your already deployed Azure application.
 
 ---
 
 ### Lab 1 – Instructions
 
+🧩 Step 1 — Configure the pipeline
+
 Configure the pipeline using below command.
 
 ```azd pipeline config --provider github```
 
-During the execution of the above command it will ask you the following questions with correct answers.
+🧩 Step 2 — Answer setup prompts
 
 Since you are setting the Action workflow first time in your forked repo, it will setup the default version of azure-dev.yml file.
 
@@ -71,7 +73,11 @@ You will see ```.github/workflows``` directory gets created in your branch with 
 
 Go to Actions, click on ```Github Actions Evaluation Workflow``` and see the initial run.
 
+🧩 Step 3 — Capture Service Principal details
+
 Get the App name from and pipeline config output you executed above - it shows something like this “Creating service principal az-dev-XXXXXXXXXXX (30XXXXXXXXXXXXXXXX)”
+
+🧩 Step 4 — Assign Azure permissions
 
 Go to Microsoft Entra ID —> Enterprise Applications —> Search using your app name —> Get the object ID
 
@@ -79,11 +85,15 @@ Go to Azure Portal —> Resource group —> Select Foundry Resource —> Assign 
 
 Now, GitHub actions evaluation workflow is ready for the trigger.
 
+🧩 Step 5 — Trigger your first run
+
 Do minor change in main branch and push it, it should trigger the workflow pipeline.
 
-Go to GitHub Actions and click **Github Actions Evaluation Workflow** to see the workflow status
+Go to GitHub Actions and click ```Github Actions Evaluation Workflow``` to see the workflow status
 
 ![CH3-chkevalworkflowrun](../../media/CH3-chkevalworkflowrun.jpg)
+
+🧩 Step 6 — View evaluation results
 
 Once the workflow gets completed, it will publish results in your Foundry.
 
@@ -91,7 +101,15 @@ Once the workflow gets completed, it will publish results in your Foundry.
 
 ![CH3-FoundryEval2](../../media/CH3-FoundryEval2.jpg)
 
-For real production workload, modify your trigger based on Pull Request merge logic.
+🚀 Production Recommendations
+
+Modify your trigger based on Pull Request merge logic.
+
+Benefits:
+- Evaluate only PR changes
+- Avoid unnecessary runs
+- Cleaner CI costs
+- Better developer workflow
 
 ---
 
