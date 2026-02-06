@@ -56,7 +56,7 @@ You can run this Microhack either on your local computer or in GitHub Codespaces
 
 For Codespaces, go into your web browser and login to GitHub.
 
-1. <u>**Fork**</u> the [Microhack Trustworthy AI](https://github.com/microsoft/microhacks-trust-ai) repo into your GitHub account. This is requirement to FORK the repo into your account for CH3 due to GitHub Actions.
+1. <u>**Fork**</u> the [Microhack Trustworthy AI](https://github.com/microsoft/microhacks-trust-ai) repo into your GitHub account. You need to fork the repo into your account for CH3 because you need GitHub Actions.
         
 1.  `Click on Code` (Green) button and click on `+` button (Create a codespaces on main).  This will take a 10 minutes to provision a Codespaces instance.  For Codespaces only, it will setup your virtual environment and grant write permissions to necessary files.
 
