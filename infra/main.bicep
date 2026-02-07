@@ -9,10 +9,10 @@ param location string
 
 // Model configuration
 @description('Chat completion model name')
-param chatModel string = 'gpt-4o-mini'
+param chatModel string = 'gpt-4.1-mini'
 
 @description('Chat model version')
-param chatModelVersion string = '2024-07-18'
+param chatModelVersion string = '2025-04-14'
 
 @description('Embedding model name')
 param embeddingModel string = 'text-embedding-3-small'
