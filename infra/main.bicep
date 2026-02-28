@@ -30,7 +30,7 @@ param evalModel string = 'gpt-4o'
 param evalModelVersion string = '2024-08-06'
 
 @description('Eval model capacity (tokens per minute in thousands)')
-param evalModelCapacity int = 100
+param evalModelCapacity int = 50
 
 var abbrs = loadJsonContent('./abbreviations.json')
 var resourceToken = toLower(uniqueString(subscription().id, environmentName, location))

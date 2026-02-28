@@ -117,7 +117,7 @@ resource chatDeployment 'Microsoft.CognitiveServices/accounts/deployments@2025-0
   parent: aiServices
   name: chatModel
   sku: {
-    name: 'GlobalStandard'
+    name: 'Standard'
     capacity: chatModelCapacity
   }
   properties: {
@@ -133,7 +133,7 @@ resource evalDeployment 'Microsoft.CognitiveServices/accounts/deployments@2025-0
   parent: aiServices
   name: evalModel
   sku: {
-    name: 'GlobalStandard'
+    name: 'Standard'
     capacity: evalModelCapacity
   }
   properties: {

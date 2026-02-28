@@ -44,16 +44,16 @@ CHUNK_OVERLAP = 200
 
 def get_openai_client():
     """Create Azure OpenAI client using AI endpoint."""
-    endpoint = os.environ.get("AZURE_AI_ENDPOINT")
+    endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT")
     if not endpoint:
-        raise ValueError("AZURE_AI_ENDPOINT not set. Run 'azd up' first.")
+        raise ValueError("AZURE_OPENAI_ENDPOINT not set. Run 'azd up' first.")
     
-    credential = DefaultAzureCredential()
-    token = credential.get_token("https://cognitiveservices.azure.com/.default")
+    api_key = os.environ.get("AZURE_OPENAI_API_KEY")
+    
     
     return AzureOpenAI(
         azure_endpoint=endpoint,
-        api_key=token.token,
+        api_key=api_key,
         api_version="2024-10-21",
     )
 
@@ -64,9 +64,10 @@ def get_search_clients():
     if not endpoint:
         raise ValueError("AZURE_AI_SEARCH_ENDPOINT not set")
     
-    credential = DefaultAzureCredential()
-    index_client = SearchIndexClient(endpoint, credential)
-    search_client = SearchClient(endpoint, INDEX_NAME, credential)
+    from azure.core.credentials import AzureKeyCredential
+    search_key = AzureKeyCredential(os.environ.get("AZURE_SEARCH_API_KEY"))
+    index_client = SearchIndexClient(endpoint, search_key)
+    search_client = SearchClient(endpoint, INDEX_NAME, search_key)
     
     return index_client, search_client
 
@@ -74,7 +75,7 @@ def get_search_clients():
 def create_index(index_client: SearchIndexClient):
     """Create or update the search index with integrated vectorizer."""
     embedding_model = os.environ.get("AZURE_EMBEDDING_MODEL", "text-embedding-3-large")
-    ai_endpoint = os.environ.get("AZURE_AI_ENDPOINT")
+    ai_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT")
     
     fields = [
         SearchField(name="id", type=SearchFieldDataType.String, key=True),
